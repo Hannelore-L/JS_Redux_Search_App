@@ -2,9 +2,6 @@
 import axios from 'axios';
 
 
-//        -        -        -        L O C A L   I M P O R T S        -        -        -
-
-
 //        -        -        -        I N I T I A L   S T A T E        -        -        -
 
 const initialState = {

@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
+
 //        -        -        -        L O C A L   I M P O R T S        -        -        -
 import './styles.css';
 import store from './data';
@@ -10,8 +11,10 @@ import Movies from './components/pages/movies/Movies';
 
 // import Layout from './components/layout/Layout';
 
+
 //        -        -        -        V A R I A B L E S        -        -        -
 const root = document.getElementById("app");
+
 
 //        -        -        -        C O D E        -        -        -
 const App = props => {
@@ -21,6 +24,7 @@ const App = props => {
           </Provider>
      );
 };
+
 
 //        -        -        -        R E N D E R        -        -        -
 render( <App />, root );
