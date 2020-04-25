@@ -31,13 +31,15 @@ export default () => {
 
      return (
           <form
-               onSubmit={ submitHandler }>
+               onSubmit={ submitHandler }
+          >
                     <label for="movieFormInput">Search term:</label>
                     <input 
                          type="text" 
                          name="movieFormInput"
                          placeholder="Example: Saw"
                          className={ error ? "error" : "" }
+                         { ...field }
                     />
 
                     <input

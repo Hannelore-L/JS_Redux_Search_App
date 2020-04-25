@@ -31,10 +31,10 @@ const FETCH_NEXT_MOVIES_SUCCESS = "FETCH_NEXT_MOVIES_SUCCESS";
 //    -    getNextMovies    -
 export const getNextMovies = str => ( dispatch, getState ) => {
      const {
-          movies:{
-               progress: {
-                    page,
-                    pages
+          movies: {
+               progress: { 
+                    page, 
+                    pages 
                }
           }
      } = getState();
@@ -43,7 +43,7 @@ export const getNextMovies = str => ( dispatch, getState ) => {
      dispatch( loadNextMovies( pageToLoad ) );
 
      axios
-          .get( `${process.env.REACT_APP_ENDPOINTMOVIES}&s=${ str }` )
+          .get( `${ process.env.REACT_APP_ENDPOINTMOVIES }&page=${ pageToLoad }&s=${ str }`)
           .then( response => {
                dispatch( setNextMovies( response.data.Search ) );
                if ( pageToLoad !== pages ) {
@@ -59,7 +59,7 @@ export const getMovies = str => dispatch => {
      dispatch( loadMovies() );
 
      axios
-     .get( `${process.env.REACT_APP_ENDPOINTMOVIES}&s=${ str }` )
+     .get( `${ process.env.REACT_APP_ENDPOINTMOVIES }&page=1&s=${ str }` )
      .then( response => {
           if ( response.data.Response === "False" ) {
                dispatch( setError( "No movies found" ) );
@@ -70,21 +70,19 @@ export const getMovies = str => dispatch => {
                          parseInt( response.data.totalResults, 10 )
                     )
                );
-               if (parseInt( response.data.totalResults, 10 ) > response.data.Search.length ) {
-                    dispatch( getNextMovies( str ) );
-               };
-          };
+               if ( parseInt( response.data.totalResults, 10 ) > response.data.Search.length ) {
+                    dispatch( getNextMovies(str) );
+               }
+          }
      } )
-     .catch( error => dispatch(
-          setError( "Api endpoint could not be reached" )
-     ) );
+     .catch( error => dispatch( setError( "Api endpoint could not be reached" ) ) );
 };   //   end of getMovies
 
 
 //    -    loadMovies    -
 export const loadMovies = () => ({
-     type: FETCH_MOVIES_SUCCESS
-});   //   end of loadMovies
+     type: FETCH_MOVIES_START
+});  //   end of loadMovies
 
 
 //    -    setMovies    -
