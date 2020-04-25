@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 //        -        -        -        L O C A L   I M P O R T S        -        -        -
 import './styles.css';
 import store from './data';
-import Movies from './components/Movies';
+import Movies from './components/pages/movies/Movies';
 
 // import Layout from './components/layout/Layout';
 
@@ -14,7 +14,7 @@ import Movies from './components/Movies';
 const root = document.getElementById("app");
 
 //        -        -        -        C O D E        -        -        -
-cont App = props => {
+const App = props => {
      return(
           <Provider store={ store }>
                <Movies/>

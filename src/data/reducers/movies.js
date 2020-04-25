@@ -11,7 +11,7 @@ const initialState = {
      loading: false,
      error: "",
      data: [],
-     progress {
+     progress: {
           page: 0,
           pages: 0,
           total: 0,
@@ -88,6 +88,16 @@ export const getMovies = str => dispatch => {
 export const loadMovies = () => ({
      type: FETCH_MOVIES_SUCCESS
 });   //   end of loadMovies
+
+
+//    -    setMovies    -
+export const setMovies = ( movies, total ) => ({
+     type: FETCH_MOVIES_SUCCESS,
+     payload: {
+          movies,
+          total
+     }
+});   //   end of setMovies
 
 
 //    -    loadNextMovies    -
