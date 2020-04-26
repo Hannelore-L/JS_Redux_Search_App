@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 //        -        -        -        L O C A L   I M P O R T S        -        -        -
 import MovieForm from './MovieForm';
+import Heart from './Heart';
 
 
 //        -        -        -        E X P O R T   M O V I E S        -        -        -
@@ -34,7 +35,7 @@ export default () => {
                     <ul>
                          { data.map( movie => (
                               <li key={ movie.imdbID }>
-                                   { movie.Title }     ( { movie.Year } )
+                                   { movie.Title }     ( { movie.Year } ) <Heart />
                               </li>
                          ) ) }
                     </ul>
