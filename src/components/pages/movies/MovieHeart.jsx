@@ -19,11 +19,6 @@ export default () => {
 
      return (
           <>
-               <h2>
-                    Blockbuster Beauties
-                    <Favorite color="secondary" />
-               </h2>
-
                { hearted.length === 0 && <p>No movies or series liked, yet.</p> }
                { hearted.length !== 0 && (
                     <ul>
