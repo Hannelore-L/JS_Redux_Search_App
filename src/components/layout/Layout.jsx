@@ -4,7 +4,7 @@ import React from 'react';
 
 
 //        -        -        -        L O C A L   I M P O R T S        -        -        -
-// import AppBar from './UiElements/AppBar';
+import Header from './UiElements/Header';
 import MovieForm from '../pages/movies/MovieForm';
 import Movies from '../pages/movies/Movies';
 import MovieHeart from '../pages/movies/MovieHeart';
@@ -13,6 +13,7 @@ import MovieHeart from '../pages/movies/MovieHeart';
 export default props => {
      return (
           <>
+               <Header />
                <MovieForm />
                <Movies />
                <hr />
