@@ -1,11 +1,12 @@
 //        -        -        -        E X T E R N A L   I M P O R T S        -        -        -
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { IconButton } from '@material-ui/core/';
+import { Favorite, FavoriteBorder  } from '@material-ui/icons/';
 
 
 //        -        -        -        L O C A L   I M P O R T S        -        -        -
-import MovieForm from './MovieForm';
-import Heart from './Heart';
+import { movieHeart, movieUnheart } from '../../../data/reducers/movieHeart';
 
 
 //        -        -        -        E X P O R T   M O V I E S        -        -        -
@@ -21,9 +22,22 @@ export default () => {
           }
      } = useSelector( state => state.movies );
 
+     const hearted = useSelector( state => state.heart );
+
+     const dispatch = useDispatch();
+
+     const heartHandler = movie => e => {
+          dispatch( movieHeart(movie) );
+     };
+
+     const unheartHandler = imdbID => e => {
+          dispatch( movieUnheart(imdbID) );
+     };
+
+
+     console.log( hearted )
      return (
           <>
-               <MovieForm />
                { loading && <p>Loading...</p> }
                { loaded !== 0 && (
                     <p>
@@ -31,11 +45,45 @@ export default () => {
                     </p>
                ) }
                { error !== "" && <p>{ error }</p> }
+
+
                { data.length !== 0 && (
                     <ul>
                          { data.map( movie => (
                               <li key={ movie.imdbID }>
-                                   { movie.Title }     ( { movie.Year } ) <Heart />
+                                   { movie.Title }     ( { movie.Year } )  
+
+                                   { hearted.filter( film => film.imdbID === movie.imdbID ) !== 0 ? (
+                                        <IconButton
+                                        color="primary"
+                                        onClick={ heartHandler( movie ) }
+                                        >
+                                             <FavoriteBorder />
+                                        </IconButton>
+                                   ) : (
+                                        <IconButton
+                                        color="secondary"
+                                        onClick={ unheartHandler( movie.imdbID ) }
+                                        >
+                                             <Favorite />
+                                        </IconButton>
+                                   ) }
+
+
+                                   {/* <IconButton
+                                        color="Secondary"
+                                        onClick={ heartHandler( movie ) }
+                                   >
+                                        <Favorite/>
+                                   </IconButton>
+
+                                   <IconButton
+                                        color="primary"
+                                        onClick={ unheartHandler( movie.imdbID ) }
+                                   >
+                                        <FavoriteBorder />
+                                   </IconButton>
+ */}
                               </li>
                          ) ) }
                     </ul>

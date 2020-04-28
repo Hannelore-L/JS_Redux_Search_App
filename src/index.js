@@ -7,9 +7,7 @@ import { Provider } from 'react-redux';
 //        -        -        -        L O C A L   I M P O R T S        -        -        -
 import './styles.css';
 import store from './data';
-import Movies from './components/pages/movies/Movies';
-
-// import Layout from './components/layout/Layout';
+import Layout from './components/layout/Layout';
 
 
 //        -        -        -        V A R I A B L E S        -        -        -
@@ -20,7 +18,7 @@ const root = document.getElementById("app");
 const App = props => {
      return(
           <Provider store={ store }>
-               <Movies/>
+               <Layout />
           </Provider>
      );
 };
