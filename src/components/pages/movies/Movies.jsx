@@ -47,13 +47,14 @@ export default () => {
                { error !== "" && <p>{ error }</p> }
 
 
+
                { data.length !== 0 && (
                     <ul>
                          { data.map( movie => (
                               <li key={ movie.imdbID }>
                                    { movie.Title }     ( { movie.Year } )  
 
-                                   { hearted.filter( film => film.imdbID === movie.imdbID ) !== 0 ? (
+                                   { hearted.filter( film => film.imdbID === movie.imdbID ).length === 0 ? (
                                         <IconButton
                                         color="primary"
                                         onClick={ heartHandler( movie ) }
@@ -68,22 +69,6 @@ export default () => {
                                              <Favorite />
                                         </IconButton>
                                    ) }
-
-
-                                   {/* <IconButton
-                                        color="Secondary"
-                                        onClick={ heartHandler( movie ) }
-                                   >
-                                        <Favorite/>
-                                   </IconButton>
-
-                                   <IconButton
-                                        color="primary"
-                                        onClick={ unheartHandler( movie.imdbID ) }
-                                   >
-                                        <FavoriteBorder />
-                                   </IconButton>
- */}
                               </li>
                          ) ) }
                     </ul>
