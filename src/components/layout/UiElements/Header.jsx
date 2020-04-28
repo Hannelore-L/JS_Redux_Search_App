@@ -15,6 +15,7 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles((theme) => ({
      root: {
           flexGrow: 1,
+          paddingBottom: "3rem"
      },
      menuButton: {
           marginRight: theme.spacing(2),
